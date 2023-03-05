@@ -1202,36 +1202,38 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Sidebar(props) {
-    var noteElements = props.notes.map(function (note, index) {
-        return _react2.default.createElement(
-            "div",
-            { key: note.id },
-            _react2.default.createElement(
+    var NoteElements = function NoteElements() {
+        return props.notes.map(function (note, index) {
+            return _react2.default.createElement(
                 "div",
-                {
-                    className: "title " + (note.id === props.currentNote.id ? "selected-note" : ""),
-                    onClick: function onClick() {
-                        return props.setCurrentNoteId(note.id);
-                    }
-                },
+                { key: note.id },
                 _react2.default.createElement(
-                    "h4",
-                    { className: "text-snippet" },
-                    note.body.split('\n')[0]
-                ),
-                _react2.default.createElement(
-                    "button",
+                    "div",
                     {
-                        className: "delete-btn",
-                        onClick: function onClick(e) {
-                            return props.deleteNote(e, note.id);
+                        className: "title " + (note.id === props.currentNote.id ? "selected-note" : ""),
+                        onClick: function onClick() {
+                            return props.setCurrentNoteId(note.id);
                         }
                     },
-                    _react2.default.createElement("i", { className: "gg-trash trash-icon" })
+                    _react2.default.createElement(
+                        "h4",
+                        { className: "text-snippet" },
+                        note.body.split('\n')[0]
+                    ),
+                    _react2.default.createElement(
+                        "button",
+                        {
+                            className: "delete-btn",
+                            onClick: function onClick(e) {
+                                return props.deleteNote(e, note.id);
+                            }
+                        },
+                        _react2.default.createElement("i", { className: "gg-trash trash-icon" })
+                    )
                 )
-            )
-        );
-    });
+            );
+        });
+    };
 
     return _react2.default.createElement(
         "section",
@@ -1250,7 +1252,7 @@ function Sidebar(props) {
                 "+"
             )
         ),
-        noteElements
+        _react2.default.createElement(NoteElements, null)
     );
 }
 

@@ -1,7 +1,8 @@
 import React from "react"
 
 export default function Sidebar(props) {
-    const noteElements = props.notes.map((note, index) => (
+    const NoteElements = ()=>{ 
+        return props.notes.map((note, index) =>(
         <div key={note.id}>
             <div
                 className={`title ${
@@ -19,6 +20,7 @@ export default function Sidebar(props) {
             </div>
         </div>
     ))  
+            }
 
     return (
         <section className="pane sidebar">
@@ -26,7 +28,7 @@ export default function Sidebar(props) {
                 <h3>Notes</h3>
                 <button className="new-note" onClick={props.newNote}>+</button>
             </div>
-            {noteElements}
+        <NoteElements/>
         </section>
     )
 }
