@@ -4,21 +4,19 @@
 https://noteapp-scrimba.netlify.app/
 
 
-Quick start:
+## Technologies
+Project is created with:
+* React : version 18.2.0
+* Vite : version 4.1.0
+
+## Setup
+To run this project, install it locally using npm:
 
 ```
-$ yarn # npm install
-$ yarn build # npm run build
-````
-
-## Development
-
-Run Webpack in watch-mode to continually compile the JavaScript as you work:
-
+$ cd ../noteapp-scrimba
+$ npm install
+$ npm run watch
 ```
-$ yarn watch # npm run watch
-```
-
 
 
 Happy Coding!

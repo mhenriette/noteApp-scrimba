@@ -979,17 +979,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function App() {
-    /**
-     * Challenge:
-     * 1. Every time the `notes` array changes, save it 
-     *    in localStorage. You'll need to use JSON.stringify()
-     *    to turn the array into a string to save in localStorage.
-     * 2. When the app first loads, initialize the notes state
-     *    with the notes saved in localStorage. You'll need to
-     *    use JSON.parse() to turn the stringified array back
-     *    into a real JS array.
-     */
-
     var _React$useState = _react2.default.useState(JSON.parse(localStorage.getItem('Notes')) || []),
         _React$useState2 = _slicedToArray(_React$useState, 2),
         notes = _React$useState2[0],
@@ -1004,14 +993,11 @@ function App() {
 
     function deleteNote(event, noteId) {
         event.stopPropagation();
-
-        // console.log(noteId)
         setNotes(function (notes) {
             return notes.filter(function (el) {
                 return el.id !== noteId;
             });
         });
-        // Your code here
     }
 
     function createNewNote() {
@@ -1033,13 +1019,11 @@ function App() {
                 return oldNote.id === currentNoteId ? { id: oldNote.id, body: text } : oldNote;
             });
             var currentNote = newNotes.find(function (note) {
-                return note.id == currentNoteId;
+                return note.id === currentNoteId;
             });
             var updatedNotes = newNotes.filter(function (el) {
                 return el.id !== currentNoteId;
             });
-            console.log(currentNote, 'current', updatedNotes);
-
             return [currentNote].concat(_toConsumableArray(updatedNotes));
         });
     }
@@ -1225,7 +1209,6 @@ function Sidebar(props) {
             _react2.default.createElement(
                 "div",
                 {
-
                     className: "title " + (note.id === props.currentNote.id ? "selected-note" : ""),
                     onClick: function onClick() {
                         return props.setCurrentNoteId(note.id);
@@ -1234,14 +1217,13 @@ function Sidebar(props) {
                 _react2.default.createElement(
                     "h4",
                     { className: "text-snippet" },
-                    note.body.split(' ')[0]
+                    note.body.split('\n')[0]
                 ),
                 _react2.default.createElement(
                     "button",
                     {
-                        className: "delete-btn"
-                        // Your onClick event handler here
-                        , onClick: function onClick(e) {
+                        className: "delete-btn",
+                        onClick: function onClick(e) {
                             return props.deleteNote(e, note.id);
                         }
                     },
