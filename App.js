@@ -7,7 +7,7 @@ import { nanoid } from "nanoid"
 
 export default function App() {
     const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('Notes')) || [])
-    const [currentNoteId, setCurrentNoteId] = React.useState(
+    const [currentNoteId, setCurrentNoteId] = useState(
         notes[0] ? notes[0].id : ""
     )
     useEffect(() => {
