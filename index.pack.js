@@ -1230,7 +1230,7 @@ var NoteTitle = function NoteTitle(_ref) {
         _react2.default.createElement(
             "div",
             {
-                className: "title " + (note.id === currentNote.id ? "selected-note" : ""),
+                className: "title " + (note.id === currentNote.id && "selected-note"),
                 onClick: function onClick() {
                     return setCurrentNoteId(note.id);
                 }
